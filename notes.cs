@@ -96,7 +96,7 @@ namespace Learning.CSharp
 
             // Boolean - true & false
             bool fooBoolean = true; // or false
-
+ 
             // Char - A single 16-bit Unicode character
             char fooChar = 'A';
 
@@ -127,7 +127,7 @@ namespace Learning.CSharp
 
             // You can split a string over two lines with the @ symbol. To escape " use ""
             string bazString = @"Here's some stuff
-on a new line! ""Wow!"", the masses cried";
+            on a new line! ""Wow!"", the masses cried";
 
             // Use const or read-only to make a variable immutable
             // const values are calculated at compile time
@@ -562,6 +562,9 @@ on a new line! ""Wow!"", the masses cried";
                     Console.WriteLine(word);
                 }
             );
+
+
+
 
             // Running this will produce different outputs
             // since each thread finishes at different times.
@@ -1227,6 +1230,11 @@ namespace Csharp7
                     return (h.Message, 400);
                 case Exception e:
                     return (e.Message, 500);
+
+                case System.Net.Http.put(HttpRequestException h {json: {id: "1",
+                    name: "test"}})
+                    return (h.Message, 404);
+
                 case string s:
                     return (s, s.Contains("Error") ? 500 : 200);
                 case null:
@@ -1290,5 +1298,50 @@ namespace Csharp7
             int id = generateId();
             // error CS0103: The name 'generateId' does not exist in the current context
         }
+    }
+}
+//variables and const
+public class Solution
+{
+    public static void Main()
+    {
+        int x = 123; // integer
+        double height = 1.70; // decimal
+        bool papi = true; // boolean
+        char symbol = 'A';
+        string name = "Diego";
+
+        Console.WriteLine("Hello" + name);
+    }
+}
+//input == Console.ReadLine();
+public class Solution
+{
+    public static void Main()
+    {
+            Console.WriteLine("what's ur name?");
+            string name = Console.ReadLine();
+            Console.WriteLine("Hello" + name);
+            Console.ReadKey();
+            //WHATS UR NAME?
+            //DIEGO
+            //HELLO DIEGO
+    }
+}
+//Type Castig == convert data types
+public class Solution
+{
+    public static void Main()
+    {
+        double a = 3.14;
+        int b = Convert.ToInt32(a);//to integer
+        Console.WriteLine(b);
+
+        int c = 123;
+        double d = Convert.ToDouble(c);//to decimal
+
+        int e = 321;
+        String f = Convert.ToString(e);//"321"
+        Console.WriteLine(f);
     }
 }
