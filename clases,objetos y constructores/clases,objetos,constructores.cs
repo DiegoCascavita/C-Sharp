@@ -1,4 +1,4 @@
-//Clase: molde para crear objetos
+//Clase: molde para crear objetos,solo pueden heredar de una fuente
 class Bebida
 {
     public string Nombre { get; set; }

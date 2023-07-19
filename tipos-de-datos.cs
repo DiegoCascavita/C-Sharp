@@ -17,6 +17,7 @@ object persona = new {nombre = "Diego", apellido ="Cascavita"};
 //ojo solo pasar que muestre una cosa la consola o cambiar sintaxis
 Console.WriteLine("{0}, {1}, {2}", numero6, numero7, numero8);
 
+//boilerplate
 using System;
 
 namespace MyApp // Note: actual namespace depends on the project name.
