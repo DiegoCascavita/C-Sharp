@@ -33,6 +33,22 @@ using System.Data.Entity;
 // You can also do this in C# 10, it is called file-scoped namespaces.
 // namespace Learning.CSharp;
 
+//Console.Write escribe en linea
+//Console.WriteLine escribe en linea y hace un salto de linea
+
+Console.WriteLine("c:\source\repos");
+/*
+Desafortunadamente, C# reserva la barra diagonal inversa para las secuencias de escape, por lo que si ejecuta el código, el compilador mostrará un error:*/
+
+Console.WriteLine("c:\\source\\repos");//asi se arregla
+
+/*En matemáticas, PEMDAS es un acrónimo que ayuda a los alumnos a recordar el orden de las operaciones. El orden es:
+
+Parentheses (paréntesis) (lo que se encuentra dentro del paréntesis se realiza primero)
+Exponents (exponentes)
+Multiplication (multiplicación) y Division (división) (de izquierda a derecha)
+Addition (suma) y Subtraction (resta) (de izquierda a derecha)*/
+
 namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file.
