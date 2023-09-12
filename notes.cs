@@ -49,6 +49,10 @@ Exponents (exponentes)
 Multiplication (multiplicación) y Division (división) (de izquierda a derecha)
 Addition (suma) y Subtraction (resta) (de izquierda a derecha)*/
 
+//arreglos o matrices
+string[] OrderIDs = { "A123", "B456", "C789" };
+
+
 namespace Learning.CSharp
 {
     // Each .cs file should at least contain a class with the same name as the file.
@@ -1361,3 +1365,10 @@ public class Solution
         Console.WriteLine(f);
     }
 }
+string message = "Find what is (inside the parentheses)";
+
+int openingPosition = message.IndexOf('(');
+int closingPosition = message.IndexOf(')');
+
+Console.WriteLine(openingPosition);
+Console.WriteLine(closingPosition);
