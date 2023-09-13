@@ -1372,3 +1372,45 @@ int closingPosition = message.IndexOf(')');
 
 Console.WriteLine(openingPosition);
 Console.WriteLine(closingPosition);
+/*El uso del método IndexOf() le permitía identificar la posición de un carácter o cadena dentro de otra cadena. La posición que devolvía el método IndexOf() ha sido el primer bloque de creación para usar el método Substring() para extraer una parte de una cadena dada la posición inicial y el número de caracteres que se van a extraer (la longitud). También se ha podido usar el método Remove() para eliminar caracteres de una cadena dada la posición inicial y la longitud. Ha obtenido información sobre variaciones como el método LastIndexOf() para buscar la última posición de un carácter de cadena dentro de otra cadena, y IndexOfAny() para buscar la posición de cualquier valor de una matriz de char especificada. Se ha usado la instrucción while para recorrer en iteración una cadena más larga, con el fin de buscar y extraer todas las instancias de un carácter o una cadena dentro de una cadena de origen mayor. Por último, se ha usado el método Replace() para intercambiar todas las instancias de un carácter o una cadena dentro de otra más grande.*/
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Crear un HashMap (Dictionary) que mapea cadenas (string) a enteros (int).
+        Dictionary<string, int> hashMap = new Dictionary<string, int>();
+
+        // Agregar elementos al HashMap.
+        hashMap["Manzana"] = 10;
+        hashMap["Banana"] = 5;
+        hashMap["Cereza"] = 15;
+
+        // Acceder a elementos en el HashMap.
+        Console.WriteLine("Cantidad de Manzanas: " + hashMap["Manzana"]);
+
+        // Verificar si una clave existe en el HashMap.
+        if (hashMap.ContainsKey("Banana"))
+        {
+            Console.WriteLine("Tenemos Bananas!");
+        }
+
+        // Iterar a través de los elementos del HashMap.
+        foreach (var kvp in hashMap)
+        {
+            Console.WriteLine($"Clave: {kvp.Key}, Valor: {kvp.Value}");
+        }
+
+        // Eliminar un elemento del HashMap.
+        hashMap.Remove("Cereza");
+
+        // Verificar si el HashMap contiene una clave después de la eliminación.
+        if (!hashMap.ContainsKey("Cereza"))
+        {
+            Console.WriteLine("No hay más Cerezas.");
+        }
+    }
+}
