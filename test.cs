@@ -1,20 +1,12 @@
 public class Solution {
-    public bool IsPalindrome(int x) {
-        // volver int a string para iterar
-        string numeroString = x.ToString();
-
-        int i = 0;
-        int j = numeroString.Length - 1;
-
-        while(i < j)
-        {
-            if(numeroString[i] != numeroString[j])
-            {
-                return false;
+    public int[] TwoSum(int[] nums, int target) {
+        for(int i = 0; i < nums.Length; i ++){
+            for(int j = i + 1; j < nums.Length; j++){
+                if(nums[i] + nums[j] == target){
+                    return new int[] { i,j };
+                }
             }
-            i ++;
-            j --;
         }
-        return true;
+        return new int[] {0};
     }
 }
