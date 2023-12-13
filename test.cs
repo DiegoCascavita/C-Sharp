@@ -1,58 +1,51 @@
 using System;
 
-class Nodo
-{
-    public int Valor;
-    public Nodo Siguiente;
-
-    public Nodo(int valor)
-    {
-        Valor = valor;
-        Siguiente = null;
-    }
-}
-
-class ListaEnlazada
-{
-    private Nodo cabeza;
-
-    public ListaEnlazada()
-    {
-        cabeza = null;
-    }
-
-    public void AgregarAlPrincipio(int valor)
-    {
-        Nodo nuevoNodo = new Nodo(valor);
-        nuevoNodo.Siguiente = cabeza;
-        cabeza = nuevoNodo;
-    }
-
-    public void MostrarLista()
-    {
-        Nodo actual = cabeza;
-        while (actual != null)
-        {
-            Console.Write(actual.Valor + " ");
-            actual = actual.Siguiente;
-        }
-        Console.WriteLine();
-    }
-}
-
 class Program
 {
+    static int BusquedaBinaria(int[] array, int elemento)
+    {
+        int inicio = 0;
+        int fin = array.Length - 1;
+
+        while (inicio <= fin)
+        {
+            int medio = (inicio + fin) / 2;
+
+            // Si el elemento está en el medio
+            if (array[medio] == elemento)
+            {
+                return medio;
+            }
+            // Si el elemento es menor, buscar en la mitad izquierda
+            else if (array[medio] > elemento)
+            {
+                fin = medio - 1;
+            }
+            // Si el elemento es mayor, buscar en la mitad derecha
+            else
+            {
+                inicio = medio + 1;
+            }
+        }
+
+        // El elemento no está presente en el array
+        return -1;
+    }
+
     static void Main()
     {
-        ListaEnlazada lista = new ListaEnlazada();
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int elementoBuscado = 7;
 
-        // Agregar nodos al principio de la lista
-        lista.AgregarAlPrincipio(3);
-        lista.AgregarAlPrincipio(2);
-        lista.AgregarAlPrincipio(1);
+        int resultado = BusquedaBinaria(array, elementoBuscado);
 
-        // Mostrar la lista
-        Console.WriteLine("Lista Enlazada:");
-        lista.MostrarLista();
+        if (resultado != -1)
+        {
+            Console.WriteLine($"Elemento {elementoBuscado} encontrado en la posición {resultado}.");
+        }
+        else
+        {
+            Console.WriteLine($"Elemento {elementoBuscado} no encontrado en el array.");
+        }
     }
 }
