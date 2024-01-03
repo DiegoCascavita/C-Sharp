@@ -1,52 +1,15 @@
-using System;
-using System.Collections.Generic;
+*Pila -Stack-:
 
-// Define a basic TreeNode class
-public class TreeNode
-{
-    public int Value { get; }
-    public List<TreeNode> Children { get; }
+Una pila es una estructura de datos LIFO (Last-In-First-Out) y se puede implementar utilizando la clase Stack.*/
+Stack<string> pila = new Stack<string>();
+pila.Push("Elemento 1");
+pila.Push("Elemento 2");
+string elemento = pila.Pop(); // elemento contiene "Elemento 2"
 
-    public TreeNode(int value)
-    {
-        Value = value;
-        Children = new List<TreeNode>();
-    }
+/*Cola:
 
-    public void AddChild(TreeNode childNode)
-    {
-        Children.Add(childNode);
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Creating nodes for the tree
-        TreeNode rootNode = new TreeNode(1);
-
-        TreeNode childNode1 = new TreeNode(2);
-        TreeNode childNode2 = new TreeNode(3);
-        TreeNode childNode3 = new TreeNode(4);
-
-        TreeNode grandChildNode1 = new TreeNode(5);
-        TreeNode grandChildNode2 = new TreeNode(6);
-
-        // Building the tree structure
-        rootNode.AddChild(childNode1);
-        rootNode.AddChild(childNode2);
-        rootNode.AddChild(childNode3);
-
-        childNode1.AddChild(grandChildNode1);
-        childNode1.AddChild(grandChildNode2);
-
-        // Accessing the tree
-        Console.WriteLine($"Root Node Value: {rootNode.Value}");
-        Console.WriteLine($"Number of Children of Root Node: {rootNode.Children.Count}");
-
-        Console.WriteLine($"Child Node 1 Value: {childNode1.Value}");
-        Console.WriteLine($"Number of Children of Child Node 1: {childNode1.Children.Count}");
-
-        Console.WriteLine($"Grandchild Node 1 Value: {grandChildNode1.Value}");
-        Console.Writ
+Una cola es una estructura de datos FIFO (First-In-First-Out) y se puede implementar utilizando la clase Queue*/
+Queue<string> cola = new Queue<string>();
+cola.Enqueue("Elemento 1");
+cola.Enqueue("Elemento 2");
+string elemento = cola.Dequeue(); // elemento contiene "Elemento 1"
