@@ -1,15 +1,34 @@
-*Pila -Stack-:
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
-Una pila es una estructura de datos LIFO (Last-In-First-Out) y se puede implementar utilizando la clase Stack.*/
-Stack<string> pila = new Stack<string>();
-pila.Push("Elemento 1");
-pila.Push("Elemento 2");
-string elemento = pila.Pop(); // elemento contiene "Elemento 2"
+namespace GraphExample {
+    public partial class Form1 : Form {
+        private readonly int[] data = { 20, 40, 30, 50, 10 }; // Sample data for the graph
 
-/*Cola:
+        public Form1() {
+            InitializeComponent();
+            this.Paint += new PaintEventHandler(Form1_Paint);
+        }
 
-Una cola es una estructura de datos FIFO (First-In-First-Out) y se puede implementar utilizando la clase Queue*/
-Queue<string> cola = new Queue<string>();
-cola.Enqueue("Elemento 1");
-cola.Enqueue("Elemento 2");
-string elemento = cola.Dequeue(); // elemento contiene "Elemento 1"
+        private void Form1_Paint(object sender, PaintEventArgs e) {
+            Graphics g = e.Graphics;
+            Pen pen = new Pen(Color.Blue);
+            int width = this.ClientSize.Width / data.Length;
+
+            for (int i = 0; i < data.Length; i++) {
+                int height = (data[i] * this.ClientSize.Height) / data.Max();
+                g.DrawLine(pen, i * width, this.ClientSize.Height, i * width, this.ClientSize.Height - height);
+            }
+        }
+    }
+
+    static class Program {
+        [STAThread]
+        static void Main() {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
