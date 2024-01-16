@@ -1,34 +1,43 @@
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 
-namespace GraphExample {
-    public partial class Form1 : Form {
-        private readonly int[] data = { 20, 40, 30, 50, 10 }; // Sample data for the graph
+class QuickSort {
+    static void Main() {
+        int[] arr = { 12, 4, 5, 6, 7, 3, 1, 15 };
+        Console.WriteLine("Original array: " + string.Join(", ", arr));
 
-        public Form1() {
-            InitializeComponent();
-            this.Paint += new PaintEventHandler(Form1_Paint);
-        }
+        QuickSortAlgorithm(arr, 0, arr.Length - 1);
 
-        private void Form1_Paint(object sender, PaintEventArgs e) {
-            Graphics g = e.Graphics;
-            Pen pen = new Pen(Color.Blue);
-            int width = this.ClientSize.Width / data.Length;
+        Console.WriteLine("Sorted array: " + string.Join(", ", arr));
+    }
 
-            for (int i = 0; i < data.Length; i++) {
-                int height = (data[i] * this.ClientSize.Height) / data.Max();
-                g.DrawLine(pen, i * width, this.ClientSize.Height, i * width, this.ClientSize.Height - height);
-            }
+    static void QuickSortAlgorithm(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = Partition(arr, low, high);
+
+            QuickSortAlgorithm(arr, low, pivotIndex - 1);
+            QuickSortAlgorithm(arr, pivotIndex + 1, high);
         }
     }
 
-    static class Program {
-        [STAThread]
-        static void Main() {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+    static int Partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                Swap(arr, i, j);
+            }
         }
+
+        Swap(arr, i + 1, high);
+
+        return i + 1;
+    }
+
+    static void Swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
