@@ -1,43 +1,49 @@
 using System;
 
-class QuickSort {
-    static void Main() {
-        int[] arr = { 12, 4, 5, 6, 7, 3, 1, 15 };
-        Console.WriteLine("Original array: " + string.Join(", ", arr));
+class Program
+{
+    // Función para calcular la longitud de la secuencia creciente más larga
+    static int LongestIncreasingSubsequence(int[] arr)
+    {
+        int n = arr.Length;
+        int[] lis = new int[n];
 
-        QuickSortAlgorithm(arr, 0, arr.Length - 1);
-
-        Console.WriteLine("Sorted array: " + string.Join(", ", arr));
-    }
-
-    static void QuickSortAlgorithm(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivotIndex = Partition(arr, low, high);
-
-            QuickSortAlgorithm(arr, low, pivotIndex - 1);
-            QuickSortAlgorithm(arr, pivotIndex + 1, high);
+        // Inicializa todas las posiciones de lis en 1
+        for (int i = 0; i < n; i++)
+        {
+            lis[i] = 1;
         }
-    }
 
-    static int Partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low - 1;
-
-        for (int j = low; j < high; j++) {
-            if (arr[j] <= pivot) {
-                i++;
-                Swap(arr, i, j);
+        // Calcula las longitudes de las subsecuencias crecientes
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                {
+                    lis[i] = lis[j] + 1;
+                }
             }
         }
 
-        Swap(arr, i + 1, high);
+        // Encuentra la longitud máxima de la subsecuencia creciente
+        int maxLength = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (lis[i] > maxLength)
+            {
+                maxLength = lis[i];
+            }
+        }
 
-        return i + 1;
+        return maxLength;
     }
 
-    static void Swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    static void Main()
+    {
+        int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
+        int result = LongestIncreasingSubsequence(arr);
+
+        Console.WriteLine("Longitud de la subsecuencia creciente más larga: " + result);
     }
 }
