@@ -46,3 +46,5 @@ cola.Enqueue("Elemento 1");
 cola.Enqueue("Elemento 2");
 string elemento = cola.Dequeue(); // elemento contiene "Elemento 1"
    
+
+int 
