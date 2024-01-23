@@ -1,49 +1,45 @@
-using System;
-
-class Program
+class Persona 
 {
-    // Función para calcular la longitud de la secuencia creciente más larga
-    static int LongestIncreasingSubsequence(int[] arr)
+    private string nombre;
+    private int edad;
+
+    //Propiedades Públicas para acceder alos campos privados
+    public string Nombre
     {
-        int n = arr.Length;
-        int[] lis = new int[n];
-
-        // Inicializa todas las posiciones de lis en 1
-        for (int i = 0; i < n; i++)
-        {
-            lis[i] = 1;
-        }
-
-        // Calcula las longitudes de las subsecuencias crecientes
-        for (int i = 1; i < n; i++)
-        {
-            for (int j = 0; j < i; j++)
-            {
-                if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
-                {
-                    lis[i] = lis[j] + 1;
-                }
-            }
-        }
-
-        // Encuentra la longitud máxima de la subsecuencia creciente
-        int maxLength = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (lis[i] > maxLength)
-            {
-                maxLength = lis[i];
-            }
-        }
-
-        return maxLength;
+        get {return nombre;}
+        set {nombre = value;}
     }
 
+    public int Edad
+    {
+        get {return edad;}
+        set
+        {
+            if(value >= 0)
+            {
+                edad = value;
+            }
+            else
+            {
+                Console.WriteLine("La edad no puede ser un valor negativo.")
+            }
+        }
+    }
+    public void MostrarInformacion()
+    {
+        Console.WriteLine($"Nombre: {Nombre}, Edad: {Edad}");
+    }
+}
+//---------------------------------------------------------------
+class Program
+{
     static void Main()
     {
-        int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60, 80 };
-        int result = LongestIncreasingSubsequence(arr);
+        Persona persona = new Persona();
 
-        Console.WriteLine("Longitud de la subsecuencia creciente más larga: " + result);
+        persona.Nombre = "Juan";
+        persona.Edad = 25;
+
+        persona.MostrarInformacion();
     }
 }
