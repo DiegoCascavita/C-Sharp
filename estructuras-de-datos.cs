@@ -184,3 +184,45 @@ public class DijkstraAlgorithm
         dijkstra.Dijkstra(graph, 0);
     }
 }
+using System;
+
+class Program
+{
+    // Function to perform binary search
+    static int BinarySearch(int[] arr, int target)
+    {
+        int left = 0;
+        int right = arr.Length - 1;
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+
+            // Check if target is present at mid
+            if (arr[mid] == target)
+                return mid;
+
+            // If target is greater, ignore left half
+            if (arr[mid] < target)
+                left = mid + 1;
+
+            // If target is smaller, ignore right half
+            else
+                right = mid - 1;
+        }
+
+        // If the target is not present in the array
+        return -1;
+    }
+
+    static void Main(string[] args)
+    {
+        int[] arr = { 2, 3, 4, 10, 40 };
+        int target = 10;
+        int result = BinarySearch(arr, target);
+        if (result == -1)
+            Console.WriteLine("Element not present in array");
+        else
+            Console.WriteLine("Element found at index " + result);
+    }
+}
