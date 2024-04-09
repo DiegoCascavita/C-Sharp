@@ -226,3 +226,38 @@ class Program
             Console.WriteLine("Element found at index " + result);
     }
 }
+// throw pointers
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] numbers = { 2, 3, 7, 11, 15 };
+        int target = 9;
+
+        // Two pointers approach to find two numbers that sum up to the target
+        int left = 0;
+        int right = numbers.Length - 1;
+
+        while (left < right)
+        {
+            int currentSum = numbers[left] + numbers[right];
+            if (currentSum == target)
+            {
+                Console.WriteLine($"Found the numbers: {numbers[left]} and {numbers[right]}");
+                break;
+            }
+            else if (currentSum < target)
+            {
+                left++; // Move the left pointer to the right
+            }
+            else
+            {
+                right--; // Move the right pointer to the left
+            }
+        }
+
+        Console.ReadLine();
+    }
+}
