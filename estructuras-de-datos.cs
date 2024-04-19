@@ -261,3 +261,85 @@ class Program
         Console.ReadLine();
     }
 }
+// Tree
+using System;
+
+public class TreeNode
+{
+    public int value;
+    public TreeNode left;
+    public TreeNode right;
+
+    public TreeNode(int val)
+    {
+        value = val;
+        left = null;
+        right = null;
+    }
+}
+
+public class BinaryTree
+{
+    public TreeNode root;
+
+    public BinaryTree()
+    {
+        root = null;
+    }
+
+    public void Insert(int key)
+    {
+        root = InsertRecursive(root, key);
+    }
+
+    private TreeNode InsertRecursive(TreeNode root, int key)
+    {
+        if (root == null)
+        {
+            root = new TreeNode(key);
+            return root;
+        }
+
+        if (key < root.value)
+        {
+            root.left = InsertRecursive(root.left, key);
+        }
+        else if (key > root.value)
+        {
+            root.right = InsertRecursive(root.right, key);
+        }
+
+        return root;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BinaryTree tree = new BinaryTree();
+
+        // Inserting elements into the binary tree
+        tree.Insert(50);
+        tree.Insert(30);
+        tree.Insert(20);
+        tree.Insert(40);
+        tree.Insert(70);
+        tree.Insert(60);
+        tree.Insert(80);
+
+        // Displaying the binary tree
+        Console.WriteLine("Binary tree elements:");
+        Display(tree.root);
+    }
+
+    static void Display(TreeNode root)
+    {
+        if (root != null)
+        {
+            Display(root.left);
+            Console.WriteLine(root.value);
+            Display(root.right);
+        }
+    }
+}
