@@ -343,3 +343,85 @@ class Program
         }
     }
 }
+using System;
+using System.Collections.Generic;
+
+public class TrieNode
+{
+    public Dictionary<char, TrieNode> Children { get; } = new Dictionary<char, TrieNode>();
+    public bool IsEndOfWord { get; set; }
+}
+
+public class Trie
+{
+    private readonly TrieNode root;
+
+    public Trie()
+    {
+        root = new TrieNode();
+    }
+
+    public void Insert(string word)
+    {
+        TrieNode current = root;
+        foreach (char c in word)
+        {
+            if (!current.Children.ContainsKey(c))
+            {
+                current.Children[c] = new TrieNode();
+            }
+            current = current.Children[c];
+        }
+        current.IsEndOfWord = true;
+    }
+
+    public bool Search(string word)
+    {
+        TrieNode current = root;
+        foreach (char c in word)
+        {
+            if (!current.Children.ContainsKey(c))
+            {
+                return false;
+            }
+            current = current.Children[c];
+        }
+        return current.IsEndOfWord;
+    }
+
+    public bool StartsWith(string prefix)
+    {
+        TrieNode current = root;
+        foreach (char c in prefix)
+        {
+            if (!current.Children.ContainsKey(c))
+            {
+                return false;
+            }
+            current = current.Children[c];
+        }
+        return true;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Trie trie = new Trie();
+
+        // Insert some words
+        trie.Insert("apple");
+        trie.Insert("banana");
+        trie.Insert("orange");
+
+        // Search for words
+        Console.WriteLine(trie.Search("apple"));   // true
+        Console.WriteLine(trie.Search("banana"));  // true
+        Console.WriteLine(trie.Search("grape"));   // false
+
+        // Search for prefixes
+        Console.WriteLine(trie.StartsWith("app")); // true
+        Console.WriteLine(trie.StartsWith("gr"));  // false
+    }
+}
