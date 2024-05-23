@@ -1414,3 +1414,87 @@ class Program
         }
     }
 }
+
+// Binary search tree searching in nodes
+
+using System;
+
+class Node
+{
+    public int data;
+    public Node left, right;
+
+    public Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+
+class BinaryTree
+{
+    Node root;
+
+    public BinaryTree()
+    {
+        root = null;
+    }
+
+    // Method to insert a new node in the tree
+    void Insert(int data)
+    {
+        root = InsertRecursive(root, data);
+    }
+
+    Node InsertRecursive(Node root, int data)
+    {
+        if (root == null)
+        {
+            root = new Node(data);
+            return root;
+        }
+
+        if (data < root.data)
+            root.left = InsertRecursive(root.left, data);
+        else if (data > root.data)
+            root.right = InsertRecursive(root.right, data);
+
+        return root;
+    }
+
+    // Method to perform a search in the tree
+    Node Search(Node root, int data)
+    {
+        if (root == null || root.data == data)
+            return root;
+
+        if (data < root.data)
+            return Search(root.left, data);
+
+        return Search(root.right, data);
+    }
+
+    // Method to wrap the search functionality
+    public Node Search(int data)
+    {
+        return Search(root, data);
+    }
+
+    static void Main()
+    {
+        BinaryTree tree = new BinaryTree();
+        tree.Insert(50);
+        tree.Insert(30);
+        tree.Insert(20);
+        tree.Insert(40);
+        tree.Insert(70);
+        tree.Insert(60);
+        tree.Insert(80);
+
+        Node result = tree.Search(60);
+        if (result != null)
+            Console.WriteLine("Node found: " + result.data);
+        else
+            Console.WriteLine("Node not found");
+    }
+}
