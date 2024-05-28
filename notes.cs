@@ -1498,3 +1498,34 @@ class BinaryTree
             Console.WriteLine("Node not found");
     }
 }
+
+using System;
+using System.Collections.Generic;
+
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        Dictionary<int, int> numIndexMap = new Dictionary<int, int>();
+        
+        for (int i = 0; i < nums.Length; i++) {
+            int complement = target - nums[i];
+            if (numIndexMap.ContainsKey(complement)) {
+                return new int[] { numIndexMap[complement], i };
+            }
+            numIndexMap[nums[i]] = i;
+        }
+        
+        throw new ArgumentException("No two sum solution");
+    }
+}
+
+class Program {
+    static void Main() {
+        Solution solution = new Solution();
+        
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = solution.TwoSum(nums, target);
+        
+        Console.WriteLine("Indices of the two numbers that add up to target: [" + result[0] + ", " + result[1] + "]");
+    }
+}
