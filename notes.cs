@@ -1529,3 +1529,35 @@ class Program {
         Console.WriteLine("Indices of the two numbers that add up to target: [" + result[0] + ", " + result[1] + "]");
     }
 }
+
+// greedy algorithm
+
+using System;
+
+class Program
+{
+    public static void PrintMaxActivities(int[] start, int[] finish, int n)
+    {
+        Console.Write("Selected activities: ");
+        int i = 0;
+        Console.Write(i + " ");
+
+        for (int j = 1; j < n; j++)
+        {
+            if (start[j] >= finish[i])
+            {
+                Console.Write(j + " ");
+                i = j;
+            }
+        }
+    }
+
+    static void Main()
+    {
+        int[] start = { 1, 3, 0, 5, 8, 5 };
+        int[] finish = { 2, 4, 6, 7, 9, 9 };
+        int n = start.Length;
+
+        PrintMaxActivities(start, finish, n);
+    }
+}
