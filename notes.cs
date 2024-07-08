@@ -1596,3 +1596,4 @@ Microservicios: Cada componente es un microservicio independiente que se comunic
 Conclusión
 La arquitectura de microservicios es una poderosa alternativa a las aplicaciones monolíticas, especialmente para aplicaciones grandes y complejas que necesitan ser escalables, flexibles y mantenibles. Sin embargo, también introduce desafíos adicionales, como la gestión de la comunicación entre servicios y la orquestación de despliegues, que deben ser gestionados cuidadosamente.
 */
+
