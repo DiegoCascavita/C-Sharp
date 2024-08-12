@@ -426,3 +426,86 @@ class Program
     }
 }
 
+// Graph
+using System;
+using System.Collections.Generic;
+
+// Node (Vertex) class
+public class Node
+{
+    public string Name { get; set; }
+    public List<Node> Neighbors { get; set; }
+
+    public Node(string name)
+    {
+        Name = name;
+        Neighbors = new List<Node>();
+    }
+
+    public void AddNeighbor(Node node)
+    {
+        Neighbors.Add(node);
+    }
+}
+
+// Graph class
+public class Graph
+{
+    private List<Node> nodes;
+
+    public Graph()
+    {
+        nodes = new List<Node>();
+    }
+
+    public void AddNode(Node node)
+    {
+        nodes.Add(node);
+    }
+
+    public void AddEdge(Node from, Node to)
+    {
+        from.AddNeighbor(to);
+    }
+
+    public void Display()
+    {
+        foreach (var node in nodes)
+        {
+            Console.Write(node.Name + ": ");
+            foreach (var neighbor in node.Neighbors)
+            {
+                Console.Write(neighbor.Name + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}   	
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Create nodes
+        Node nodeA = new Node("A");
+        Node nodeB = new Node("B");
+        Node nodeC = new Node("C");
+        Node nodeD = new Node("D");
+
+        // Create a graph and add nodes
+        Graph graph = new Graph();
+        graph.AddNode(nodeA);
+        graph.AddNode(nodeB);
+        graph.AddNode(nodeC);
+        graph.AddNode(nodeD);
+
+        // Add edges
+        graph.AddEdge(nodeA, nodeB);
+        graph.AddEdge(nodeA, nodeC);
+        graph.AddEdge(nodeB, nodeD);
+        graph.AddEdge(nodeC, nodeD);
+
+        // Display the graph
+        graph.Display();
+    }
+}
